@@ -1,0 +1,11 @@
+{
+  "name": "elevatorsaga",
+  "version": "0.0.1",
+  "description": "Elevator Saga code",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/larrytylenda/elevatorsaga.git"
+  }
+}
