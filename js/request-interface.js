@@ -3,7 +3,6 @@ define(function (require) {
 	'use strict';
 	
 	var RequestInterface = function (options) {
-		var self = this;
 		options || (options = {});
 		if (options.index || options.index === 0) this.index = options.index;
 		if (options.item) this._item = options.item;
