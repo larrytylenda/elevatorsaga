@@ -10,8 +10,7 @@ define(function (require) {
 		var self = this;
 		RequestInterface.prototype.constructor.apply(this, arguments);
 		this._item.on("idle", function () {
-			console.log('idle - elNum');
-			console.log(self.index);
+			console.log('idle - (elNum: ' + self.index + ')');
 			
 			// The elevator is idle, so let's go to all the floors (or did we forget one?)
 			self._item.goToFloor(0);
@@ -24,15 +23,16 @@ define(function (require) {
 			message('this.destinationQueue', self._item.destinationQueue);
 			message('this.loadFactor()', self._item.loadFactor());
 			message('thisElevator', self._item);
-			if (self._item.loadFactor()) {
-				self._item.goToFloor(floorNum);
-			}
+			if (self._item.loadFactor()) self._item.goToFloor(floorNum);
 		});
 		this._item.on('stopped_at_floor', function (floorNum) {
 			var message = buildMessage('stopped_at_floor', '(elNum: ' + self.index + ')');
 			var aboveQueue = [];
 			var belowQueue = [];
-			self.floors = self.floors.filter(function (num) { return num !== floorNum });
+			var floorGoTo;
+			var directionDown;
+			var closest;
+			self.floors = self.floors.filter(function (num) { return num !== floorNum; });
 			self._item.destinationQueue.forEach(function (i) {
 				var queue;
 				if (i === floorNum || (queue = (i > floorNum ? aboveQueue : belowQueue)).indexOf(i) !== -1) return;
@@ -49,18 +49,14 @@ define(function (require) {
 			message('thisElevator', self._item);
 			message('elevatorRequests', self.floors);
 			
-			var floorGoTo = FloorRequest.getMostRequestedItem(floorNum);
+			floorGoTo = FloorRequest.getMostRequestedItem(floorNum);
 			FloorRequest.resetItem(floorNum);
-			var directionDown = false;
-			if (self._item.destinationQueue.length) {
-				directionDown = self._item.destinationQueue[0] < self._item.currentFloor();
-			}
-			else {
-				directionDown = self._item.currentFloor() > 0;
-			}
+			directionDown = self._item.destinationQueue.length ?
+				self._item.destinationQueue[0] < self._item.currentFloor() :
+				self._item.currentFloor() > 0;
 			self._item.goingUpIndicator(!directionDown);
 			self._item.goingDownIndicator(!!directionDown);
-			var closest = FloorRequest.getClosestItem(floorNum, !!directionDown ? 'down' : 'up');
+			closest = FloorRequest.getClosestItem(floorNum, !!directionDown ? 'down' : 'up');
 			if (closest || closest === 0) {
 				self._item.goToFloor(closest, true);
 			}
