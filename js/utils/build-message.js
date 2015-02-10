@@ -1,12 +1,12 @@
 /* global define */
 define(function (require) {
-  'use strict';
+	'use strict';
   
-  var buildMessage = function (method, message) {
-    return function (variable, value) {
-      console.log(method + ' ' + message + ' - ' + variable);
-      console.log(value);
-    };
-  };
-  return buildMessage;
+	var buildMessage = function (method, message) {
+		return function (variable, value) {
+			console.log(method + ' ' + message + ' - ' + variable);
+			console.log(value);
+		};
+	};
+	return buildMessage;
 });
