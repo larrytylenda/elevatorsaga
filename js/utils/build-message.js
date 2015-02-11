@@ -4,8 +4,7 @@ define(function (require) {
   
 	var buildMessage = function (method, message) {
 		return function (variable, value) {
-			console.log(method + ' ' + message + ' - ' + variable);
-			console.log(value);
+			console.log(method + ' ' + message + ' - ' + variable, value);
 		};
 	};
 	return buildMessage;
