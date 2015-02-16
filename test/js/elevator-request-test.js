@@ -5,7 +5,7 @@ define(function (require)
 	{
 		it('should be true', function ()
 		{
-			expect(true).should.be.equal(true);
+			true.should.be.equal(true);
 		});
 	});
 });
