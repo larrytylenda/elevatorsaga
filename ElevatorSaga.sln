@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		Gruntfile.js = Gruntfile.js
-		karma.config.js = karma.config.js
+		karma.conf.js = karma.conf.js
 		main.js = main.js
 		package.json = package.json
 		README.md = README.md
@@ -32,13 +32,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{5DF10F21
 		js\utils\build-message.js = js\utils\build-message.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{6A705D0B-2B52-4E88-A369-A942F3F91748}"
+	ProjectSection(SolutionItems) = preProject
+		test\js\elevator-request-test.js = test\js\elevator-request-test.js
+		test\js\floor-request-test.js = test\js\floor-request-test.js
+		test\js\main-test.js = test\js\main-test.js
+		test\js\request-interface-test.js = test\js\request-interface-test.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{2859303D-DA94-4B6E-935C-8BAF35A68BA2}"
+	ProjectSection(SolutionItems) = preProject
+		test\js\utils\build-message-test.js = test\js\utils\build-message-test.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EC5336A4-4CF9-40CD-A151-6294B88C346A} = {CB2BC77B-C229-43B9-AAAB-87629E5C3348}
-		{7602C1B3-CE89-4AC5-BD93-71298D42AE5B} = {CB2BC77B-C229-43B9-AAAB-87629E5C3348}
 		{5DF10F21-2EC1-42B1-96C8-E54BC26D39B5} = {7602C1B3-CE89-4AC5-BD93-71298D42AE5B}
+		{6A705D0B-2B52-4E88-A369-A942F3F91748} = {EC5336A4-4CF9-40CD-A151-6294B88C346A}
+		{2859303D-DA94-4B6E-935C-8BAF35A68BA2} = {6A705D0B-2B52-4E88-A369-A942F3F91748}
 	EndGlobalSection
 EndGlobal
